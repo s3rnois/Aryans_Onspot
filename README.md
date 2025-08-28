@@ -1,35 +1,20 @@
 # Aryans_Onspot
 
-using UnityEngine;
-
-public class PlayerMovement : MonoBehaviour
+public class MainMenuController : MonoBehaviour
 {
-    public float speed = 5f;
-    public float sensitivity = 2f;
-
-    private CharacterController controller;
-    private Vector3 velocity;
-
-    public Transform playerCamera;
-
-    private void Start()
+    // Method to load the Game scene when Play is clicked
+    public void PlayGame()
     {
-        controller = GetComponent<CharacterController>();
+        SceneManager.LoadScene("Game"); // Load the scene named "Game"
     }
 
-    private void Update()
+    // Method to exit the application
+    public void ExitGame()
     {
-        float moveX = Input.GetAxis("Horizontal");
-        float moveZ = Input.GetAxis("Vertical");
-        
-        Vector3 move = transform.right * moveX + transform.forward * moveZ;
-        controller.Move(move * speed * Time.deltaTime);
-
-        // Camera Look
-        float mouseX = Input.GetAxis("Mouse X") * sensitivity;
-        float mouseY = Input.GetAxis("Mouse Y") * sensitivity;
-
-        transform.Rotate(Vector3.up * mouseX);
-        playerCamera.Rotate(Vector3.left * mouseY);
+        Debug.Log("Exiting Game");
+        Application.Quit();
     }
+
+    // Method to show instructions (you could show a UI panel here)
+    
 }
